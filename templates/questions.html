@@ -1,0 +1,23 @@
+<!-- Template for questions -->
+
+{% extends 'base.html' %}
+{% block title %}Questions{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Question {{question_index + 1}}</h1>
+</header>
+
+<main>
+    <form action="{{url_for('handle_questions', question_index=question_index)}}" method="post">
+        <label for="question"><h2>{{question.question}}</h2></label>
+        <br><br>
+
+        {% for choice in question.choices %}
+        <input type="radio" name="answer" value="{{choice}}"> {{choice}}
+        {% endfor %}
+
+        <button type="submit">Submit your answer</button>  
+    </form>
+</main>
+{% endblock %}
